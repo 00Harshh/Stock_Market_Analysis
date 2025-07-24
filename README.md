@@ -15,7 +15,6 @@ This project leverages Python and key data science libraries to analyze historic
 * ✅ 20-day rolling volatility
 * ✅ Normalized price comparisons across stocks
 * ✅ Correlation heatmap between assets
-* ✅ Candlestick charts (OHLC) using `mplfinance`
 * ✅ Grid-based plotting for multi-stock comparison
 
 ---
@@ -30,7 +29,7 @@ This project leverages Python and key data science libraries to analyze historic
 | **Seaborn**      | Enhanced heatmaps and plots     |
 | **Plotly**       | Interactive plotting (optional) |
 | **yfinance**     | Stock data download from Yahoo  |
-| **mplfinance**   | Financial candlestick charting  |
+
 
 ---
 
@@ -94,21 +93,10 @@ volatility = data.pct_change().rolling(20).std()
 
 All metrics are visualized in a subplot grid for each stock.
 
----
-
-### 6. 📉 Candlestick Charts
-
-Use `mplfinance` to visualize open-high-low-close (OHLC) data with trend overlays:
-
-```python
-import mplfinance as mpf
-
-mpf.plot(df, type='candle', style='charles', mav=(20, 50), volume=True)
-```
 
 ---
 
-### 7. 🧠 Correlation Heatmap
+### 6. 🧠 Correlation Heatmap
 
 Understand inter-stock relationships and portfolio diversification potential.
 
@@ -131,7 +119,7 @@ plt.show()
 * 📊 Daily returns comparison
 * 🧮 Moving averages and volatility overlay
 * 📌 Correlation heatmap
-* 🕯️ Candlestick charts with volume
+
 
 ---
 
