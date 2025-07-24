@@ -28,22 +28,7 @@ This project performs exploratory analysis and visualization of major tech stock
 - **mplfinance** (for candlestick charts)
 
 ---
-
-## 📂 Project Structure
-
-```
-
-├── data/
-│   └── \*.csv               # Optional pre-downloaded data
-├── notebooks/
-│   └── stock\_analysis.ipynb # Main analysis notebook
-├── plots/
-│   └── \*.png               # Saved visualizations
-├── README.md
-└── requirements.txt
-
 ````
-
 ---
 
 ## 📈 Analysis Steps
@@ -133,7 +118,7 @@ mpf.plot(df, type='candle', style='charles', mav=(20, 50))
 1. Clone the repo:
 
 ```bash
-git clone https://github.com/yourusername/stock-analysis-dashboard.git
+git clone https://github.com/00Harshh/stock-analysis-dashboard.git
 cd stock-analysis-dashboard
 ```
 
