@@ -115,11 +115,22 @@ plt.show()
 ## 🖼️ Sample Visuals
 
 * 📈 Normalized stock price chart
-* 📉 Drawdown curves for each stock
-* 📊 Daily returns comparison
-* 🧮 Moving averages and volatility overlay
-* 📌 Correlation heatmap
+  <img width="988" height="520" alt="output" src="https://github.com/user-attachments/assets/69d092a4-1485-4d11-9b6b-835a7dc43835" />
 
+* 📉 Drawdown curves for each stock
+* <img width="1488" height="590" alt="output4" src="https://github.com/user-attachments/assets/95f9e943-25f4-44ed-9943-d2dd94641ac5" />
+<img width="2240" height="985" alt="output5" src="https://github.com/user-attachments/assets/2cf9f3ce-1962-4dc8-8471-68be7fa0ca03" />
+
+* 📊 Daily returns comparison
+<img width="1183" height="584" alt="output11" src="https://github.com/user-attachments/assets/c8a73757-5546-41c0-b136-a1c83f467a35" />
+
+
+* 🧮 Moving averages and volatility overlay
+* 
+* <img width="1786" height="989" alt="output6" src="https://github.com/user-attachments/assets/402784a9-470a-475b-b747-5a50bd22824d" />
+
+* 📌 Correlation heatmap
+* <img width="524" height="435" alt="output3" src="https://github.com/user-attachments/assets/e9fa09f3-3291-4e59-829c-dbecad4daa4d" />
 
 ---
 
