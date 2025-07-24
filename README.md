@@ -1,84 +1,90 @@
 
 # 📊 Stock Market Analysis Dashboard
 
-This project performs exploratory analysis and visualization of major tech stocks such as **AAPL**, **MSFT**, **NVDA**, **AMZN**, **META**, and **GOOG**. It includes drawdown analysis, moving averages, volatility tracking, normalized price comparisons, daily returns, and correlation heatmaps using Python.
+A comprehensive stock market analysis and visualization project focused on leading tech stocks: **AAPL**, **MSFT**, **NVDA**, **AMZN**, **META**, and **GOOG**.
+
+This project leverages Python and key data science libraries to analyze historical stock data, visualize trends, calculate technical indicators, and compare stock behaviors over time using both static and interactive visualizations.
 
 ---
 
-## 🚀 Features
+## 🚀 Key Features
 
-- ✅ Daily returns calculation  
-- ✅ Drawdown detection and visualization  
-- ✅ Moving averages and volatility overlay  
-- ✅ Candlestick chart visualization  
-- ✅ Price normalization for comparative analysis  
-- ✅ Correlation heatmap between stocks  
-- ✅ Grid layout visualizations for multiple stocks
+* ✅ Daily returns calculation & plotting
+* ✅ Drawdown detection from historical peaks
+* ✅ 20-day and 50-day moving averages
+* ✅ 20-day rolling volatility
+* ✅ Normalized price comparisons across stocks
+* ✅ Correlation heatmap between assets
+* ✅ Candlestick charts (OHLC) using `mplfinance`
+* ✅ Grid-based plotting for multi-stock comparison
+
+---
+
+## 🧪 Technologies & Libraries
+
+| Technology       | Purpose                         |
+| ---------------- | ------------------------------- |
+| **Python 3.10+** | Core programming language       |
+| **Pandas**       | Data manipulation and analysis  |
+| **Matplotlib**   | Static data visualization       |
+| **Seaborn**      | Enhanced heatmaps and plots     |
+| **Plotly**       | Interactive plotting (optional) |
+| **yfinance**     | Stock data download from Yahoo  |
+| **mplfinance**   | Financial candlestick charting  |
 
 ---
 
-## 🧰 Technologies Used
+## 📈 Analysis Workflow
 
-- **Python 3.10+**
-- **Pandas**
-- **Matplotlib**
-- **Seaborn**
-- **Plotly**
-- **yfinance** (for stock data)
-- **mplfinance** (for candlestick charts)
+### 1. 📥 Fetch Historical Stock Data
 
----
-````
----
-
-## 📈 Analysis Steps
-
-### 1. Fetch Historical Stock Data
-
-Data is fetched using `yfinance`:
+Data is pulled from Yahoo Finance using the `yfinance` library.
 
 ```python
 import yfinance as yf
+
 tickers = ['AAPL', 'MSFT', 'NVDA', 'AMZN', 'META', 'GOOG']
 data = yf.download(tickers, start="2020-01-01", end="2024-12-31")['Close']
-````
+```
 
 ---
 
-### 2. Normalize Prices for Comparison
+### 2. ⚖️ Normalize Prices for Comparison
 
-Normalize all stock prices to start from 1 for direct comparison:
+Normalize all stock prices to start from 1 to visually compare percentage growth over time.
 
 ```python
 normalized = data / data.iloc[0]
+normalized.plot(figsize=(12,6), title='Normalized Stock Prices')
 ```
 
 ---
 
-### 3. Calculate Daily Returns
+### 3. 📊 Calculate Daily Returns
+
+Used for risk analysis and volatility measurement.
 
 ```python
 daily_returns = data.pct_change()
+daily_returns.plot(figsize=(12,6), title='Daily Returns')
 ```
 
 ---
 
-### 4. Drawdown Calculation
+### 4. 📉 Drawdown Analysis
 
-A drawdown is the decline from a historical peak:
+Drawdown helps visualize how much a stock has fallen from its peak.
 
 ```python
 drawdowns = data / data.cummax() - 1
+drawdowns.plot(figsize=(12,6), title='Drawdown from Peak')
 ```
-
-### 📉 Drawdown Plot
-
-* Grid layout for multiple stocks
-* Comparison chart across all tickers
 
 ---
 
-### 5. Moving Averages & Volatility
+### 5. 📏 Moving Averages & Volatility
+
+Simple moving averages (SMA) and rolling volatility help smooth price movements and capture risk.
 
 ```python
 ma_20 = data.rolling(20).mean()
@@ -86,49 +92,65 @@ ma_50 = data.rolling(50).mean()
 volatility = data.pct_change().rolling(20).std()
 ```
 
----
-
-### 6. Correlation Heatmap
-
-```python
-import seaborn as sns
-sns.heatmap(daily_returns.corr(), annot=True, cmap='coolwarm')
-```
+All metrics are visualized in a subplot grid for each stock.
 
 ---
 
-### 7. Candlestick Charts
+### 6. 📉 Candlestick Charts
 
-Use `mplfinance` to visualize OHLC candles:
+Use `mplfinance` to visualize open-high-low-close (OHLC) data with trend overlays:
 
 ```python
 import mplfinance as mpf
-mpf.plot(df, type='candle', style='charles', mav=(20, 50))
+
+mpf.plot(df, type='candle', style='charles', mav=(20, 50), volume=True)
 ```
 
 ---
 
-## 📊 Visual Output Examples
+### 7. 🧠 Correlation Heatmap
 
+Understand inter-stock relationships and portfolio diversification potential.
+
+```python
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(10, 8))
+sns.heatmap(daily_returns.corr(), annot=True, cmap='coolwarm', fmt=".2f")
+plt.title("Stock Correlation Heatmap")
+plt.show()
+```
 
 ---
 
-## 📝 How to Run
+## 🖼️ Sample Visuals
 
-1. Clone the repo:
+* 📈 Normalized stock price chart
+* 📉 Drawdown curves for each stock
+* 📊 Daily returns comparison
+* 🧮 Moving averages and volatility overlay
+* 📌 Correlation heatmap
+* 🕯️ Candlestick charts with volume
+
+---
+
+## 📝 Getting Started
+
+1. **Clone this repository:**
 
 ```bash
 git clone https://github.com/00Harshh/stock-analysis-dashboard.git
 cd stock-analysis-dashboard
 ```
 
-2. Create virtual environment and install dependencies:
+2. **Install dependencies (recommended in a virtual environment):**
 
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Run the Jupyter Notebook:
+3. **Launch the Jupyter Notebook:**
 
 ```bash
 jupyter notebook notebooks/stock_analysis.ipynb
@@ -136,33 +158,38 @@ jupyter notebook notebooks/stock_analysis.ipynb
 
 ---
 
-## 📌 Future Improvements
+## 📌 Future Enhancements
 
-* Add Bollinger Bands and RSI
-* Interactive dashboards using Plotly Dash or Streamlit
-* Real-time stock data integration
+* [ ] Add Bollinger Bands and RSI
+* [ ] Integrate real-time stock updates
+* [ ] Convert to interactive dashboard using **Plotly Dash** or **Streamlit**
+* [ ] Add sector-wise comparisons and fundamental ratios
 
 ---
 
 ## 📃 License
 
-MIT License. See `LICENSE` for more details.
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
 
 ---
 
 ## 🤝 Contributing
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+Contributions are welcome and appreciated!
+
+* Fork the repository
+* Create a new branch for your changes
+* Submit a pull request with a clear description
 
 ---
 
 ## 🙌 Acknowledgements
 
-* [Yahoo Finance](https://finance.yahoo.com/)
+* [Yahoo Finance API via yfinance](https://pypi.org/project/yfinance/)
+* [Pandas](https://pandas.pydata.org/)
 * [Matplotlib](https://matplotlib.org/)
 * [Seaborn](https://seaborn.pydata.org/)
-* [Pandas](https://pandas.pydata.org/)
+* [mplfinance](https://github.com/matplotlib/mplfinance)
 
-
-
+---
 
